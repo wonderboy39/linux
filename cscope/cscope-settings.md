@@ -28,16 +28,21 @@ $ chmod 755 mkcscope.sh
 ##### 3) vimrc의 내용 변경  
 ```{bash}
 csprg=/usr/bin/cscope
-set csto=0(숫자 0)
+set csto=0      "(숫자 0)
 set cst
 set nocsverb
+set nu          "line number 표시
+set cindent     "c언어 스타일 들여쓰기
+set tags=/home/jayden/svn/jan_2017/jlt630trunk/tags
+syntax on
+filetype on
 
-if filereadable("./cscope.out")
-	cs add cscope.out
-else
-	cs add /usr/src/linux/cscope.out
-endif
-set csverb
+"colorscheme
+colorscheme ron "vim colorscheme 설정
+
+"ctags
+set tags=./tags,tags;$HOME
+set tags+=~/svn/fdd/telstra/jlt610trunk/tags
 ```
 
 ##### 4) CSCOPE 사용
@@ -81,7 +86,7 @@ if filereadable("./cscope.out")
 	cs add cscope.out
 	cs add $CSCOPE_DB
 else
-	cs /home/jayden/svn/jan_2017/jlt620trunk/cscope.out
+	cs add /home/jayden/svn/jan_2017/jlt620trunk/cscope.out
 endif
 set csverb
 ```
